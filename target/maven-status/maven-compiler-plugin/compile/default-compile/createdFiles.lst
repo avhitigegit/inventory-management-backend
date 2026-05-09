@@ -7,6 +7,7 @@ com\hardware\dto\response\SupplierResponse$SupplierResponseBuilder.class
 com\hardware\dto\request\SaleItemRequest.class
 com\hardware\entity\Customer.class
 com\hardware\enums\PaymentType.class
+com\hardware\exception\GlobalExceptionHandler.class
 com\hardware\dto\request\PurchaseItemRequest.class
 com\hardware\dto\response\TopProductResponse.class
 com\hardware\security\JwtUtil.class
@@ -34,8 +35,10 @@ com\hardware\dto\response\SaleResponse.class
 com\hardware\dto\response\AuthResponse.class
 com\hardware\dto\response\SaleItemResponse.class
 com\hardware\repository\CustomerRepository.class
+com\hardware\exception\DuplicateEntryException.class
 com\hardware\dto\response\CustomerResponse$CustomerResponseBuilder.class
 com\hardware\dto\response\StockAdjustmentResponse$StockAdjustmentResponseBuilder.class
+com\hardware\exception\ErrorResponse$ErrorResponseBuilder.class
 com\hardware\entity\Sale$SaleBuilder.class
 com\hardware\entity\Sale.class
 com\hardware\dto\response\TopProductResponse$TopProductResponseBuilder.class
@@ -50,9 +53,11 @@ com\hardware\entity\Category.class
 com\hardware\entity\Purchase.class
 com\hardware\entity\Supplier$SupplierBuilder.class
 com\hardware\enums\AdjustmentType.class
+com\hardware\exception\ResourceNotFoundException.class
 com\hardware\entity\StockAdjustment.class
 com\hardware\repository\CategoryRepository.class
 com\hardware\dto\request\ProductRequest.class
+com\hardware\exception\ErrorResponse.class
 com\hardware\dto\request\CategoryRequest.class
 com\hardware\dto\response\SaleResponse$SaleResponseBuilder.class
 com\hardware\entity\User$UserBuilder.class
@@ -68,6 +73,7 @@ com\hardware\dto\response\CategoryResponse.class
 com\hardware\dto\response\CustomerResponse.class
 com\hardware\dto\response\DashboardResponse$DashboardResponseBuilder.class
 com\hardware\entity\PurchaseItem$PurchaseItemBuilder.class
+com\hardware\exception\InsufficientStockException.class
 com\hardware\HardwareManagementApplication.class
 com\hardware\repository\PurchaseItemRepository.class
 com\hardware\dto\response\LowStockResponse.class
