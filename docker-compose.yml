@@ -1,0 +1,116 @@
+version: '3.8'
+
+# =============================================================
+# WHAT IS DOCKER COMPOSE?
+# =============================================================
+# Docker Compose is a tool that lets you define and run one or
+# more containers using a single file (this file).
+#
+# Instead of typing long "docker run" commands every time,
+# you just run:  docker compose up -d
+# And to stop:   docker compose down
+#
+# This file sets up TWO things for this project:
+#   1. PostgreSQL  — the database server (port 5433)
+#   2. pgAdmin 4   — a web UI to view your database visually
+#                    (port 5050) — useful as a backup to DBeaver
+# =============================================================
+
+services:
+
+  # -----------------------------------------------------------
+  # SERVICE 1: PostgreSQL Database
+  # -----------------------------------------------------------
+  postgres:
+    # The official PostgreSQL image from Docker Hub (version 16)
+    image: postgres:16
+
+    # The name shown in Docker Desktop for this container
+    container_name: hardware_postgres
+
+    # Environment variables — PostgreSQL reads these on first start
+    # to create the database, user, and password automatically
+    environment:
+      POSTGRES_DB: hardware_db         # Database name
+      POSTGRES_USER: hardware_user     # Database username
+      POSTGRES_PASSWORD: hardware123   # Database password
+
+    # PORT MAPPING  →  host_port : container_port
+    # We use 5433 on your laptop (host) so it does not clash with
+    # any other PostgreSQL container already running on port 5432
+    # Spring Boot connects to localhost:5433
+    ports:
+      - "5433:5432"
+
+    # VOLUME — where PostgreSQL stores your data files on disk
+    # Using a named volume means your data is NEVER lost even if
+    # you stop or remove the container. Docker keeps it safe.
+    volumes:
+      - hardware_postgres_data:/var/lib/postgresql/data
+
+    # Both containers talk to each other through this private network
+    networks:
+      - hardware_network
+
+    # Automatically restart the container if it crashes,
+    # but NOT if you manually stop it with "docker compose down"
+    restart: unless-stopped
+
+    # Health check — Docker waits until PostgreSQL is truly ready
+    # before marking the container as healthy.
+    # This prevents Spring Boot from trying to connect too early.
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U hardware_user -d hardware_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # -----------------------------------------------------------
+  # SERVICE 2: pgAdmin 4 (Web-based PostgreSQL UI)
+  # -----------------------------------------------------------
+  # This is an optional visual tool — open it in your browser at
+  # http://localhost:5050
+  # Login: admin@hardware.com / admin
+  # You can also use DBeaver instead — both connect to the same DB
+  pgadmin:
+    # Official pgAdmin 4 image
+    image: dpage/pgadmin4:latest
+
+    container_name: hardware_pgadmin
+
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@hardware.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+
+    # pgAdmin runs on port 5050 on your laptop
+    ports:
+      - "5050:80"
+
+    # pgAdmin depends on PostgreSQL — it starts only after
+    # the postgres container is healthy
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    networks:
+      - hardware_network
+
+    restart: unless-stopped
+
+# =============================================================
+# VOLUMES
+# Named volumes are managed by Docker and persist on your disk
+# even after containers are stopped or removed.
+# =============================================================
+volumes:
+  hardware_postgres_data:
+    name: hardware_postgres_data
+
+# =============================================================
+# NETWORKS
+# A private internal network so the two containers (postgres
+# and pgadmin) can communicate with each other by service name.
+# =============================================================
+networks:
+  hardware_network:
+    name: hardware_network
