@@ -2,6 +2,7 @@ com\hardware\repository\SaleRepository.class
 com\hardware\dto\response\PurchaseItemResponse$PurchaseItemResponseBuilder.class
 com\hardware\entity\Customer.class
 com\hardware\enums\PaymentType.class
+com\hardware\config\DataSeeder.class
 com\hardware\exception\GlobalExceptionHandler.class
 com\hardware\dto\response\TopProductResponse.class
 com\hardware\service\SupplierService.class

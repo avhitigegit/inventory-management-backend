@@ -2,6 +2,7 @@ E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\security\CustomUserDetailsService.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\controller\SaleController.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\exception\ErrorResponse.java
+E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\config\DataSeeder.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\response\CustomerResponse.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\service\impl\StockAdjustmentServiceImpl.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\HardwareManagementApplication.java
