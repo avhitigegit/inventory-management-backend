@@ -9,6 +9,7 @@ com\hardware\security\JwtUtil.class
 com\hardware\dto\request\SaleRequest.class
 com\hardware\repository\PurchaseRepository.class
 com\hardware\dto\response\PurchaseResponse$PurchaseResponseBuilder.class
+com\hardware\controller\ProductController.class
 com\hardware\service\StockAdjustmentService.class
 com\hardware\dto\response\PurchaseResponse.class
 com\hardware\dto\response\SaleItemResponse$SaleItemResponseBuilder.class
@@ -25,6 +26,7 @@ com\hardware\dto\response\StockAdjustmentResponse$StockAdjustmentResponseBuilder
 com\hardware\exception\ErrorResponse$ErrorResponseBuilder.class
 com\hardware\entity\Sale.class
 com\hardware\service\impl\SupplierServiceImpl.class
+com\hardware\controller\AuthController.class
 com\hardware\dto\request\CustomerRequest.class
 com\hardware\dto\response\CategoryResponse$CategoryResponseBuilder.class
 com\hardware\dto\response\SupplierResponse.class
@@ -44,8 +46,10 @@ com\hardware\dto\response\CustomerResponse.class
 com\hardware\entity\PurchaseItem$PurchaseItemBuilder.class
 com\hardware\exception\InsufficientStockException.class
 com\hardware\HardwareManagementApplication.class
+com\hardware\controller\SaleController.class
 com\hardware\dto\response\LowStockResponse.class
 com\hardware\entity\Supplier.class
+com\hardware\controller\CategoryController.class
 com\hardware\config\SecurityConfig.class
 com\hardware\dto\response\ProductResponse$ProductResponseBuilder.class
 com\hardware\service\ProductService.class
@@ -59,6 +63,7 @@ com\hardware\repository\StockAdjustmentRepository.class
 com\hardware\dto\response\StockAdjustmentResponse.class
 com\hardware\entity\Product.class
 com\hardware\service\SaleService.class
+com\hardware\controller\CustomerController.class
 com\hardware\service\impl\StockAdjustmentServiceImpl.class
 com\hardware\repository\SupplierRepository.class
 com\hardware\dto\request\StockAdjustmentRequest.class
@@ -72,7 +77,10 @@ com\hardware\service\impl\CategoryServiceImpl.class
 com\hardware\dto\response\SaleResponse.class
 com\hardware\service\impl\AuthServiceImpl.class
 com\hardware\service\PurchaseService.class
+com\hardware\controller\ReportController.class
+com\hardware\controller\SupplierController.class
 com\hardware\entity\Sale$SaleBuilder.class
+com\hardware\controller\PurchaseController.class
 com\hardware\dto\response\TopProductResponse$TopProductResponseBuilder.class
 com\hardware\entity\Purchase$PurchaseBuilder.class
 com\hardware\dto\response\ProductResponse.class
@@ -81,6 +89,7 @@ com\hardware\entity\Customer$CustomerBuilder.class
 com\hardware\service\impl\ReportServiceImpl.class
 com\hardware\entity\User.class
 com\hardware\service\impl\ProductServiceImpl.class
+com\hardware\controller\StockAdjustmentController.class
 com\hardware\entity\Category.class
 com\hardware\entity\Supplier$SupplierBuilder.class
 com\hardware\enums\AdjustmentType.class

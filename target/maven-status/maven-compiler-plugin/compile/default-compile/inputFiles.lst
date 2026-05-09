@@ -1,5 +1,6 @@
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\response\StockAdjustmentResponse.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\security\CustomUserDetailsService.java
+E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\controller\SaleController.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\exception\ErrorResponse.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\response\CustomerResponse.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\service\impl\StockAdjustmentServiceImpl.java
@@ -9,12 +10,15 @@ E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\enti
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\response\PurchaseItemResponse.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\request\RegisterRequest.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\response\DashboardResponse.java
+E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\controller\AuthController.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\security\JwtUtil.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\repository\SaleRepository.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\request\SupplierRequest.java
+E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\controller\ReportController.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\request\SaleItemRequest.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\request\StockAdjustmentRequest.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\service\SaleService.java
+E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\controller\CustomerController.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\service\impl\ProductServiceImpl.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\service\ProductService.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\repository\PurchaseRepository.java
@@ -26,7 +30,9 @@ E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\enum
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\config\SecurityConfig.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\service\impl\SaleServiceImpl.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\repository\StockAdjustmentRepository.java
+E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\controller\ProductController.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\exception\ResourceNotFoundException.java
+E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\controller\CategoryController.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\entity\Purchase.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\repository\CustomerRepository.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\request\CategoryRequest.java
@@ -45,6 +51,8 @@ E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\serv
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\entity\Customer.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\repository\ProductRepository.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\exception\GlobalExceptionHandler.java
+E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\controller\PurchaseController.java
+E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\controller\SupplierController.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\response\LowStockResponse.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\response\CategoryResponse.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\request\LoginRequest.java
@@ -64,6 +72,7 @@ E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\repository\UserRepository.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\service\impl\ReportServiceImpl.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\request\SaleRequest.java
+E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\controller\StockAdjustmentController.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\entity\SaleItem.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\security\JwtAuthFilter.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\entity\Category.java
