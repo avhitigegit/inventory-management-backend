@@ -1,5 +1,7 @@
 com\hardware\repository\SaleRepository.class
+com\hardware\config\SecurityConfig.class
 com\hardware\dto\response\ProductResponse$ProductResponseBuilder.class
+com\hardware\security\CustomUserDetailsService.class
 com\hardware\dto\response\PurchaseItemResponse$PurchaseItemResponseBuilder.class
 com\hardware\dto\response\SupplierResponse$SupplierResponseBuilder.class
 com\hardware\dto\request\SaleItemRequest.class
@@ -7,6 +9,7 @@ com\hardware\entity\Customer.class
 com\hardware\enums\PaymentType.class
 com\hardware\dto\request\PurchaseItemRequest.class
 com\hardware\dto\response\TopProductResponse.class
+com\hardware\security\JwtUtil.class
 com\hardware\dto\request\SaleRequest.class
 com\hardware\repository\PurchaseRepository.class
 com\hardware\dto\response\PurchaseResponse$PurchaseResponseBuilder.class
@@ -69,3 +72,4 @@ com\hardware\HardwareManagementApplication.class
 com\hardware\repository\PurchaseItemRepository.class
 com\hardware\dto\response\LowStockResponse.class
 com\hardware\entity\Supplier.class
+com\hardware\security\JwtAuthFilter.class
