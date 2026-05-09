@@ -1,0 +1,4 @@
+com\hardware\enums\PaymentType.class
+com\hardware\enums\AdjustmentType.class
+com\hardware\enums\Role.class
+com\hardware\HardwareManagementApplication.class

@@ -1,0 +1,303 @@
+Hardware Stock Management System — Complete Step Guide
+
+🔧 BACKEND STEPS (Spring Boot — IntelliJ IDEA)
+
+STEP 1 — Create Spring Boot Project
+
+Go to https://start.spring.io
+Select: Maven, Java 21, Spring Boot 3.x
+Group: com.hardware | Artifact: hardware-management
+Add dependencies: Spring Web, Spring Security, Spring Data JPA, PostgreSQL Driver, Lombok, Validation
+Download and open in IntelliJ IDEA
+
+
+STEP 2 — Add JWT Dependencies to pom.xml
+
+Add jjwt-api, jjwt-impl, jjwt-jackson version 0.11.5 manually to pom.xml
+
+
+STEP 3 — Setup PostgreSQL Database
+
+Install PostgreSQL if not installed
+Create database: hardware_db
+Create user: hardware_user with password
+Grant all privileges to that user
+
+
+STEP 4 — Configure application.properties
+
+Set datasource URL, username, password
+Set JPA hibernate ddl-auto to update
+Set JWT secret and expiration
+Set server port to 8080
+
+
+STEP 5 — Create Folder Structure
+Create these packages inside com.hardware:
+
+entity
+repository
+service and service/impl
+controller
+dto/request and dto/response
+security
+config
+exception
+util
+mapper
+
+
+STEP 6 — Create Enum Classes
+
+Create Role enum → values: ADMIN, OWNER, CASHIER, STORE_KEEPER
+Create PaymentType enum → values: CASH, CREDIT, CARD
+
+
+STEP 7 — Create All Entity Classes
+Create these one by one:
+
+User entity → id, username, password, role, active
+Category entity → id, name, description
+Supplier entity → id, name, phone, email, address, creditBalance
+Customer entity → id, name, phone, address, creditBalance
+Product entity → id, name, sku, barcode, category, supplier, brand, unit, costPrice, sellingPrice, quantity, reorderLevel, active
+Sale entity → id, customer, totalAmount, discount, paidAmount, paymentType, createdAt
+SaleItem entity → id, sale, product, quantity, unitPrice, totalPrice
+Purchase entity → id, supplier, totalAmount, note, createdAt
+PurchaseItem entity → id, purchase, product, quantity, costPrice, totalPrice
+StockAdjustment entity → id, product, adjustmentType, quantity, reason, createdAt
+
+
+STEP 8 — Create All Repository Interfaces
+Create JPA repository for each entity:
+
+UserRepository → add findByUsername method
+CategoryRepository
+SupplierRepository
+CustomerRepository
+ProductRepository → add findBySku, findByBarcode, findByQuantityLessThanEqualReorderLevel methods
+SaleRepository → add findByCreatedAtBetween method
+SaleItemRepository
+PurchaseRepository
+PurchaseItemRepository
+StockAdjustmentRepository
+
+
+STEP 9 — Create DTO Classes
+Request DTOs:
+
+LoginRequest → username, password
+RegisterRequest → username, password, role
+CategoryRequest → name, description
+SupplierRequest → name, phone, email, address
+CustomerRequest → name, phone, address
+ProductRequest → name, sku, barcode, categoryId, supplierId, brand, unit, costPrice, sellingPrice, reorderLevel
+SaleRequest → customerId, paymentType, discount, paidAmount, list of items
+SaleItemRequest → productId, quantity
+PurchaseRequest → supplierId, note, list of items
+PurchaseItemRequest → productId, quantity, costPrice
+StockAdjustmentRequest → productId, adjustmentType, quantity, reason
+
+Response DTOs:
+
+AuthResponse → token, username, role
+ProductResponse → all product fields including category name, supplier name
+SaleResponse → all sale fields including items
+PurchaseResponse → all purchase fields including items
+LowStockResponse → product name, sku, quantity, reorderLevel
+DashboardResponse → todaySales, totalProducts, lowStockCount, totalCustomers
+
+
+STEP 10 — Create JWT Security Classes
+
+JwtUtil class → generateToken, extractUsername, validateToken methods
+JwtAuthFilter class → extends OncePerRequestFilter, reads Authorization header, validates token
+CustomUserDetailsService class → implements UserDetailsService, loads user by username from DB
+
+
+STEP 11 — Create Security Configuration
+
+SecurityConfig class → disable CSRF, permit /api/auth/**, protect all other routes, add JwtAuthFilter, set stateless session, define PasswordEncoder bean, define AuthenticationManager bean
+
+
+STEP 12 — Create Exception Classes
+
+ResourceNotFoundException → extends RuntimeException
+InsufficientStockException → extends RuntimeException
+DuplicateEntryException → extends RuntimeException
+GlobalExceptionHandler class → annotated with @RestControllerAdvice, handles all above exceptions and returns proper error responses
+
+
+STEP 13 — Create Service Layer
+AuthService:
+
+login method → authenticate user, generate JWT token, return AuthResponse
+register method → encode password, save user
+
+CategoryService:
+
+getAllCategories
+getCategoryById
+createCategory
+updateCategory
+deleteCategory
+
+SupplierService:
+
+getAllSuppliers
+getSupplierById
+createSupplier
+updateSupplier
+deleteSupplier
+
+CustomerService:
+
+getAllCustomers
+getCustomerById
+createCustomer
+updateCustomer
+getCustomersWithCredit
+
+ProductService:
+
+getAllProducts
+getProductById
+getProductByBarcode
+createProduct
+updateProduct
+deleteProduct
+getLowStockProducts
+updateStock (internal method used by sale and purchase services)
+
+PurchaseService (GRN):
+
+createPurchase → save purchase, save purchase items, increase product stock quantity
+
+SaleService:
+
+createSale → validate stock, save sale, save sale items, decrease product stock quantity, handle credit customer balance
+getSaleById
+getSalesByDateRange
+
+StockAdjustmentService:
+
+createAdjustment → increase or decrease stock based on adjustmentType
+
+ReportService:
+
+getDashboardSummary
+getDailySalesReport
+getMonthlySalesReport
+getLowStockReport
+getTopSellingProducts
+
+
+STEP 14 — Create Controller Layer
+
+AuthController → POST /api/auth/login, POST /api/auth/register
+CategoryController → GET, POST, PUT, DELETE /api/categories
+SupplierController → GET, POST, PUT, DELETE /api/suppliers
+CustomerController → GET, POST, PUT, DELETE /api/customers, GET /api/customers/credit
+ProductController → GET, POST, PUT, DELETE /api/products, GET /api/products/low-stock, GET /api/products/barcode/{barcode}
+PurchaseController → GET, POST /api/purchases
+SaleController → GET, POST /api/sales, GET /api/sales/report
+StockAdjustmentController → POST /api/stock-adjustments
+ReportController → GET /api/reports/dashboard, GET /api/reports/daily, GET /api/reports/monthly, GET /api/reports/top-products
+
+
+STEP 15 — Add CORS Configuration
+
+Create CorsConfig class → allow all origins (for development), allow all headers and methods
+
+
+STEP 16 — Add Initial Data Seeder
+
+Create DataSeeder class → implements ApplicationRunner
+On startup → check if admin user exists, if not create default admin user with encoded password
+
+
+STEP 17 — Test Backend with Postman
+Test in this order:
+
+Register admin user
+Login and get JWT token
+Create a category
+Create a supplier
+Create a product
+Create a purchase (GRN) — stock should increase
+Create a sale — stock should decrease
+Check low stock products
+Check dashboard report
+
+
+
+🎨 FRONTEND MAJOR STEPS (React — Overview)
+
+Full detailed steps will be given separately when you start frontend
+
+
+MAJOR STEP 1 — Create React Project
+
+Use Vite + React + TypeScript
+Install: Axios, React Router, Material UI, Redux Toolkit, Recharts
+
+MAJOR STEP 2 — Setup Folder Structure
+
+api/, components/, pages/, layouts/, hooks/, store/, routes/, utils/, types/
+
+MAJOR STEP 3 — Setup Axios with JWT Interceptor
+
+Create axios instance
+Auto attach Bearer token to every request
+Handle 401 unauthorized → redirect to login
+
+MAJOR STEP 4 — Setup Redux Store
+
+Auth slice → store token and user info
+Notification slice → global success/error messages
+
+MAJOR STEP 5 — Build Auth Pages
+
+Login page
+Protected route wrapper
+
+MAJOR STEP 6 — Build Main Layout
+
+Sidebar with navigation
+Top navbar with user info
+Role-based menu visibility
+
+MAJOR STEP 7 — Build All Pages
+
+Dashboard with charts
+Products page (list, add, edit)
+Categories page
+Suppliers page
+Customers page
+GRN / Purchase page
+POS / Billing page (most important)
+Stock Adjustments page
+Reports page
+
+MAJOR STEP 8 — POS Billing Screen
+
+Barcode/search product input
+Add to cart
+Discount field
+Payment type selection
+Print bill
+
+MAJOR STEP 9 — Reports & Charts
+
+Daily sales bar chart
+Top selling products
+Low stock alerts table
+Customer credit list
+
+MAJOR STEP 10 — Final Polish
+
+Loading states
+Error handling
+Empty states
+Responsive layout
+Role-based page access
