@@ -68,6 +68,7 @@ E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\serv
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\service\SupplierService.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\service\impl\PurchaseServiceImpl.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\service\StockAdjustmentService.java
+E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\config\CorsConfig.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\dto\response\SaleItemResponse.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\repository\UserRepository.java
 E:\Stock-Management\inventory-management-backend\src\main\java\com\hardware\service\impl\ReportServiceImpl.java

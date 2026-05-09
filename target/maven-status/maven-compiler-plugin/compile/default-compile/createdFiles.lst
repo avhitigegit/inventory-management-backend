@@ -69,6 +69,7 @@ com\hardware\repository\SupplierRepository.class
 com\hardware\dto\request\StockAdjustmentRequest.class
 com\hardware\dto\request\LoginRequest.class
 com\hardware\repository\UserRepository.class
+com\hardware\config\CorsConfig.class
 com\hardware\entity\Category$CategoryBuilder.class
 com\hardware\service\CategoryService.class
 com\hardware\dto\request\RegisterRequest.class
