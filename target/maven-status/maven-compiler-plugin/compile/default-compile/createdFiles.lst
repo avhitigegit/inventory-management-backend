@@ -1,5 +1,6 @@
 com\hardware\repository\SaleRepository.class
 com\hardware\dto\response\PurchaseItemResponse$PurchaseItemResponseBuilder.class
+com\hardware\dto\response\UserResponse.class
 com\hardware\entity\Customer.class
 com\hardware\enums\PaymentType.class
 com\hardware\config\DataSeeder.class
@@ -10,7 +11,9 @@ com\hardware\security\JwtUtil.class
 com\hardware\dto\request\SaleRequest.class
 com\hardware\repository\PurchaseRepository.class
 com\hardware\dto\response\PurchaseResponse$PurchaseResponseBuilder.class
+com\hardware\controller\UserController.class
 com\hardware\controller\ProductController.class
+com\hardware\service\impl\UserServiceImpl.class
 com\hardware\service\StockAdjustmentService.class
 com\hardware\dto\response\PurchaseResponse.class
 com\hardware\dto\response\SaleItemResponse$SaleItemResponseBuilder.class
@@ -23,12 +26,14 @@ com\hardware\repository\CustomerRepository.class
 com\hardware\exception\DuplicateEntryException.class
 com\hardware\service\impl\PurchaseServiceImpl.class
 com\hardware\dto\response\CustomerResponse$CustomerResponseBuilder.class
+com\hardware\service\UserService.class
 com\hardware\dto\response\StockAdjustmentResponse$StockAdjustmentResponseBuilder.class
 com\hardware\exception\ErrorResponse$ErrorResponseBuilder.class
 com\hardware\entity\Sale.class
 com\hardware\service\impl\SupplierServiceImpl.class
 com\hardware\controller\AuthController.class
 com\hardware\dto\request\CustomerRequest.class
+com\hardware\dto\response\UserResponse$UserResponseBuilder.class
 com\hardware\dto\response\CategoryResponse$CategoryResponseBuilder.class
 com\hardware\dto\response\SupplierResponse.class
 com\hardware\entity\Purchase.class
@@ -83,6 +88,7 @@ com\hardware\controller\ReportController.class
 com\hardware\controller\SupplierController.class
 com\hardware\entity\Sale$SaleBuilder.class
 com\hardware\controller\PurchaseController.class
+com\hardware\dto\request\ChangePasswordRequest.class
 com\hardware\dto\response\TopProductResponse$TopProductResponseBuilder.class
 com\hardware\entity\Purchase$PurchaseBuilder.class
 com\hardware\dto\response\ProductResponse.class
@@ -99,6 +105,7 @@ com\hardware\exception\ResourceNotFoundException.class
 com\hardware\dto\request\ProductRequest.class
 com\hardware\exception\ErrorResponse.class
 com\hardware\dto\request\CategoryRequest.class
+com\hardware\dto\request\UpdateUserRequest.class
 com\hardware\entity\StockAdjustment$StockAdjustmentBuilder.class
 com\hardware\dto\request\PurchaseRequest.class
 com\hardware\service\AuthService.class
